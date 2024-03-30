@@ -1,6 +1,51 @@
 # C++
 Learn c++ and oops concepts wit examples
 
+## Differences between OOP and other programming styles
+- Object-Oriented Programming (OOP) has become widely popular due to its many advantages over other programming styles such as Procedural Programming and Functional Programming.
+- Alternative methods to OOP include:
+1. Procedural Programming
+  - Procedural Programming is a programming style that is based on a set of procedures or functions, where each function is a sequence of instructions that performs a specific task. It focuses on the sequence of must-follow steps that to accomplish a specific task. In contrast, OOP focuses on the objects and their interactions to solve problems.
+2. Functional Programming
+  - Functional Programming is a programming style that focuses on the use of functions that produce output based on their input, without modifying any external state. It is based on mathematical functions and is characterized by immutability and statelessness. In contrast, OOP is based on objects and their states, and it is designed to manage complex, stateful systems.
+3. Structured or modular programming.
+4. Imperative programming.
+5. Declarative programming.
+6. Logical programming.
+
+- Most advanced programming languages enable developers to combine models, because they can be used for different programming methods. For example, JavaScript can be used for OOP and functional programming.
+
+## Benefits of OOP over other programming
+- Modularity
+- Reusability
+- Productivity
+- Easily upgradable and scalable
+- Interface descriptions
+- Security
+- Flexibility
+
+## What are examples of object-oriented programming languages?
+1. popular pure OOP languages include:
+    - Ruby
+    - Scala
+    - Emerald
+2. Programming languages designed primarily for OOP include:
+    - Java
+    - Python
+    - C++
+3. Other programming languages that pair with OOP include:
+    - Visual Basic .NET
+    - PHP
+    - JavaScript
+
+
+
+## Advantages of OOP
+- Classes provide easy “building blocks” for faster coding and make code highly maintainable
+- Create more stable and consistent code
+- Make large and complex code bases more efficient and manageable
+- Teams working from the same code base will benefit from existing well-written classes
+- Java in particular enforces OOP, which creates good habits (but may be challenging for beginners)
 
 ## 1. OOPs Concepts
 1. What is the opp?
@@ -11,6 +56,14 @@ Learn c++ and oops concepts wit examples
     - OOP provides a clear structure for the programs
     - OOP helps to keep the C++ code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
     - reusable ,  less code and shorter development time
+
+
+3. The four pillars of object-oriented programming are:
+
+- Inheritance: child classes inherit data and behaviors from the parent class
+- Encapsulation: containing information in an object, exposing only selected information
+- Abstraction: only exposing high-level public methods for accessing an object
+- Polymorphism: many methods can do the same task
 
 ## 2. Class and Objects
 - Classes and objects are the two main aspects of object-oriented programming.
@@ -237,6 +290,12 @@ Like we specified in the previous chapter; Inheritance lets us inherit attribute
 
 For example, think of a base class called Animal that has a method called animalSound(). Derived classes of Animals could be Pigs, Cats, Dogs, Birds - And they also have their own implementation of an animal sound (the pig oinks, and the cat meows, etc.):
 
+- The following two types of polymorphism are useful in OOP:
+1. Compile-time polymorphism
+    - Also called static binding polymorphism, it means binding occurs at compile time. Method overloading is an example of compile-time polymorphism. It allows programmers to use objects of the same name while their parameters can be different.
+2. Runtime polymorphism
+    - Runtime polymorphism involves dynamic binding. Method overriding is an example of runtime polymorphism. In this process, an object binds with the functionality at the run time.
+
 ```
 // Base class
 class Animal {
@@ -273,4 +332,167 @@ int main() {
   return 0;
 }
 ```
+
+- Polymorphism refers to the ability to perform a certain action in different ways. In Java, polymorphism can take two forms: method overloading and method overriding.
+
+Method overloading happens when various methods with the same name are present in a class. When they are called, they are differentiated by the number, order, or types of their parameters. Method overriding occurs when a child class overrides a method of its parent.
+
+1. Static polymorphism (method overloading)
+```
+class  Bird  {
+public  void  fly()  {
+System.out.println("The bird is flying.");
+}
+public  void  fly(int height)  {
+System.out.println("The bird is flying "  + height +  " feet high.");
+}
+public  void  fly(String name,  int height)  {
+System.out.println("The "  + name +  " is flying "  + height +  " feet high.");
+}
+}
+
+
+class  TestBirdStatic  {
+public  static  void  main(String[] args)  {
+Bird myBird =  new Bird();
+myBird.fly();
+myBird.fly(10000);
+myBird.fly("eagle", 10000);
+}
+}
+```
+
+2. Dynamic polymorphism (method overriding)
+```
+class  Animal  {
+public  void  eat()  {
+System.out.println("This animal eats insects.");
+}
+}
+
+class  Bird  extends Animal {
+public  void  eat()  {
+System.out.println("This bird eats seeds.");
+}
+}
+
+class  TestBirdDynamic  {
+public  static  void  main(String[] args)  {
+Animal myAnimal =  new Animal();
+myAnimal.eat();
+Bird myBird =  new Bird();
+myBird.eat();
+}
+}
+```
+
 ## 8. Abstraction
+Abstraction aims to hide complexity from users and show them only relevant information. For example, if you’re driving a car, you don’t need to know about its internal workings.
+
+The same is true of Java classes. You can hide internal implementation details using abstract classes or interfaces. On the abstract level, you only need to define the method signatures (name and parameter list) and let each class implement them in their own way.
+
+- Abstraction in Java:
+
+- Hides the underlying complexity of data
+- Helps avoid repetitive code
+- Presents only the signature of internal functionality
+- Gives flexibility to programmers to change the implementation of abstract behavior
+- Partial abstraction (0-100%) can be achieved with abstract classes
+- Total abstraction (100%) can be achieved with interfaces
+
+```
+abstract  class  Animal  {
+// abstract methods
+abstract  void  move();
+abstract  void  eat();
+// concrete method
+void  label()  {
+System.out.println("Animal's data:");
+}
+}
+```
+
+```
+class  Bird  extends Animal {
+void  move()  {
+System.out.println("Moves by flying.");
+}
+void  eat()  {
+System.out.println("Eats birdfood.");
+}
+}
+
+class  Fish  extends Animal {
+void  move()  {
+System.out.println("Moves by swimming.");
+}
+void  eat()  {
+System.out.println("Eats seafood.");
+}
+}
+```
+
+```
+class  TestBird  {
+public  static  void  main(String[] args)  {
+Animal myBird =  new Bird();
+myBird.label();
+myBird.move();
+myBird.eat();
+}
+}
+
+class  TestFish  {
+public  static  void  main(String[] args)  {
+Animal myFish =  new Fish();
+myFish.label();
+myFish.move();
+myFish.eat();
+}
+}
+```
+
+### 1. Interfaces
+An interface is a 100% abstract class. It can only have static, final, and public fields and abstract methods. It’s frequently referred to as a blueprint of a class as well. Java interfaces allow you to implement multiple inheritances in your code, as a class can implement any number of interfaces. Classes can access an interface with the implements keyword.
+
+```
+interface  Animal  {
+public  void  eat();
+public  void  sound();
+}
+
+interface  Bird  {
+int numberOfLegs = 2;
+String outerCovering =  "feather";
+public  void  fly();
+}
+```
+
+```
+class  Eagle  implements Animal, Bird {
+public  void  eat()  {
+System.out.println("Eats reptiles and amphibians.");
+}
+public  void  sound()  {
+System.out.println("Has a high-pitched whistling sound.");
+}
+public  void  fly()  {
+System.out.println("Flies up to 10,000 feet.");
+}
+}
+```
+
+```
+class  TestEagleInterfaces  {
+public  static  void  main(String[] args)  {
+Eagle myEagle =  new Eagle();
+
+myEagle.eat();
+myEagle.sound();
+myEagle.fly();
+
+System.out.println("Number of legs: "  + Bird.numberOfLegs);
+System.out.println("Outer covering: "  + Bird.outerCovering);
+}
+}
+```
